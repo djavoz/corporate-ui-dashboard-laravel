@@ -88,7 +88,7 @@
                                         <td class="align-middle bg-transparent border-bottom">2</td>
                                         <td class="align-middle bg-transparent border-bottom">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="../assets/img/team-2.jpg" class="rounded-circle mr-2"
+                                                <img src="{{ asset('assets/img/team-2.jpg') }}" class="rounded-circle mr-2"
                                                     alt="user2" style="height: 36px; width: 36px;">
                                             </div>
                                         </td>

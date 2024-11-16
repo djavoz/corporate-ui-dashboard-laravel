@@ -10,7 +10,7 @@
                     <div class="col-auto">
                         <div
                             class="avatar avatar-2xl rounded-circle position-relative mt-n7 border border-gray-100 border-4">
-                            <img src="../assets/img/team-2.jpg" alt="profile_image" class="w-100">
+                            <img src="{{ asset('assets/img/team-2.jpg') }}" alt="profile_image" class="w-100">
                         </div>
                     </div>
                     <div class="col-auto my-auto">
@@ -240,7 +240,7 @@
                                 </li>
                                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-1">
                                     <div class="avatar avatar-sm rounded-circle me-2">
-                                        <img src="../assets/img/team-2.jpg" alt="kal" class="w-100">
+                                        <img src="{{ asset('assets/img/team-2.jpg') }}" alt="kal" class="w-100">
                                     </div>
                                     <div class="d-flex align-items-start flex-column justify-content-center">
                                         <h6 class="mb-0 text-sm font-weight-semibold">Miriam Lore</h6>
