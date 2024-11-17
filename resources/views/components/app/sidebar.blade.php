@@ -4,7 +4,7 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand d-flex align-items-center m-0"
             href=" https://demos.creative-tim.com/corporate-ui-dashboard/pages/dashboard.html " target="_blank">
-            <span class="font-weight-bold text-lg">Corporate UI</span>
+            <span class="font-weight-bold text-lg">Stok Manajemen</span>
         </a>
     </div>
     <div class="collapse navbar-collapse px-4  w-auto " id="sidenav-collapse-main">
@@ -60,20 +60,20 @@
                 </a>
             </li>
             <li class="nav-item border-start my-0 pt-2">
-                <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('users-management') ? 'active' : '' }}"
-                    href="{{ route('users-management') }}">
+                <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('barang-masuk.index') ? 'active' : '' }}"
+                    href="{{ route('barang-masuk.index') }}">
                     <span class="nav-link-text ms-1">Arus Barang Masuk</span>
                 </a>
             </li>
             <li class="nav-item border-start my-0 pt-2">
-                <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('users-management') ? 'active' : '' }}"
-                    href="{{ route('users-management') }}">
+                <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('barang-keluar.index') ? 'active' : '' }}"
+                    href="{{ route('barang-keluar.index') }}">
                     <span class="nav-link-text ms-1">Arus Barang Keluar</span>
                 </a>
             </li>
             <li class="nav-item border-start my-0 pt-2">
-                <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('users-management') ? 'active' : '' }}"
-                    href="{{ route('users-management') }}">
+                <a class="nav-link position-relative ms-0 ps-2 py-2 {{ is_current_route('laporan.form') ? 'active' : '' }}"
+                    href="{{ route('laporan.form') }}">
                     <span class="nav-link-text ms-1">Download Laporan</span>
                 </a>
             </li>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\LaporanExport;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -8,7 +9,13 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\StokController;
+use App\Models\Kategori;
+use App\Models\Laporan;
+use App\Models\Stok;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +33,24 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $jumlah_kategori = Kategori::count();
+    $jumlah_stok = Stok::count();
+    $jumlah_arm = Laporan::where('jumlah_masuk', '>', 0)->count(); // Menghitung jumlah arus barang masuk
+    $jumlah_ark = Laporan::where('jumlah_keluar', '>', 0)->count(); // Menghitung jumlah arus barang keluar
+    return view('dashboard', compact('jumlah_kategori', 'jumlah_stok', 'jumlah_arm', 'jumlah_ark'));
+
 })->name('dashboard')->middleware('auth');
+
+Route::get('/laporan/download', function () {
+    return view('download-laporan');  // Halaman form untuk memilih rentang tanggal
+})->name('laporan.form');
+
+Route::get('/laporan/export', function (Request $request) {
+    $start_date = $request->input('start_date');
+    $end_date = $request->input('end_date');
+
+    return Excel::download(new LaporanExport($start_date, $end_date), 'laporan_barang.xlsx');
+})->name('laporan.download');
 
 Route::get('/tables', function () {
     return view('tables');
@@ -84,3 +107,23 @@ Route::get('/laravel-examples/users-management', [UserController::class, 'index'
 
 Route::resource('kategori', KategoriController::class)->middleware('auth');
 Route::resource('stok', StokController::class)->middleware('auth');
+Route::resource('laporan', LaporanController::class)->middleware('auth');
+// Arus Barang Masuk
+Route::get('/arus-barang-masuk', [LaporanController::class, 'barangMasuk'])->name('barang-masuk.index')->middleware('auth');
+Route::get('/arus-barang-masuk/create', [LaporanController::class, 'createBarangMasuk'])->name('barang-masuk.create')->middleware('auth');
+Route::post('/arus-barang-masuk', [LaporanController::class, 'storeBarangMasuk'])->name('barang-masuk.store')->middleware('auth');
+Route::get('/arus-barang-masuk/{laporan_id}/edit', [LaporanController::class, 'editBarangMasuk'])->name('barang-masuk.edit')->middleware('auth');
+Route::put('/arus-barang-masuk/{laporan_id}', [LaporanController::class, 'updateBarangMasuk'])->name('barang-masuk.update')->middleware('auth');
+Route::delete('/arus-barang-masuk/{laporan_id}', [LaporanController::class, 'destroyBarangMasuk'])->name('barang-masuk.destroy')->middleware('auth');
+
+
+// Arus Barang Keluar
+Route::get('/arus-barang-keluar', [LaporanController::class, 'barangKeluar'])->name('barang-keluar.index')->middleware('auth');
+Route::get('/arus-barang-keluar/create', [LaporanController::class, 'createBarangKeluar'])->name('barang-keluar.create')->middleware('auth');
+Route::post('/arus-barang-keluar', [LaporanController::class, 'storeBarangKeluar'])->name('barang-keluar.store')->middleware('auth');
+Route::get('/arus-barang-keluar/{laporan_id}/edit', [LaporanController::class, 'editBarangKeluar'])->name('barang-keluar.edit')->middleware('auth');
+Route::put('/arus-barang-keluar/{laporan_id}', [LaporanController::class, 'updateBarangKeluar'])->name('barang-keluar.update')->middleware('auth');
+Route::delete('/arus-barang-keluar/{laporan_id}', [LaporanController::class, 'destroyBarangKeluar'])->name('barang-keluar.destroy')->middleware('auth');
+
+
+
