@@ -7,7 +7,7 @@
             <span class="font-weight-bold text-lg">Stok Manajemen</span>
         </a>
     </div>
-    <div class="collapse navbar-collapse px-4  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse px-4 w-100" style="height: 500px" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link  {{ is_current_route('dashboard') ? 'active' : '' }}"
