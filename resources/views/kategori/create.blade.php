@@ -13,7 +13,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="kategori" class="form-label">Nama Kategori</label>
-                                    <input type="text" class="form-control" id="kategori" name="kategori" value="{{ old('kategori') }}" required>
+                                    <input type="text" class="form-control" id="kategori" name="kategori" value="{{ old('kategori') }}" autocomplete="off" required>
                                     @error('kategori')
                                         <div class="text-danger text-sm mt-1">{{ $message }}</div>
                                     @enderror

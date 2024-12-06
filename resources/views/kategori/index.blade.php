@@ -2,6 +2,13 @@
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <x-app.navbar />
         <div class="container-fluid py-4 px-5">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-12">
                     <div class="card border shadow-xs mb-4">

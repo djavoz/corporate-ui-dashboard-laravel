@@ -34,7 +34,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $jumlah_kategori = Kategori::count();
-    $jumlah_stok = Stok::count();
+    $jumlah_stok = Stok::whereRaw('DATE(created_at) = CURDATE()')->get();
     $jumlah_arm = Laporan::where('jumlah_masuk', '>', 0)->count(); // Menghitung jumlah arus barang masuk
     $jumlah_ark = Laporan::where('jumlah_keluar', '>', 0)->count(); // Menghitung jumlah arus barang keluar
     return view('dashboard', compact('jumlah_kategori', 'jumlah_stok', 'jumlah_arm', 'jumlah_ark'));

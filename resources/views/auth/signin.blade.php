@@ -7,7 +7,7 @@
                         <div class="col-xl-4 col-md-6 d-flex flex-column mx-auto">
                             <div class="card card-plain mt-8">
                                 <div class="card-header pb-0 text-left bg-transparent text-center">
-                                    <h3 class="font-weight-black text-dark display-6">Selamat Datang Kembali</h3>
+                                    <h3 class="font-weight-black text-dark display-6">Login Page</h3>
                                 </div>
                                 <div class="text-center">
                                     @if (session('status'))
@@ -24,10 +24,10 @@
                                 <div class="card-body">
                                     <form role="form" class="text-start" method="POST" action="sign-in">
                                         @csrf
-                                        <label>Email Address</label>
+                                        <label>Alamat Email</label>
                                         <div class="mb-3">
                                             <input type="email" id="email" name="email" class="form-control"
-                                                placeholder="Enter your email address"
+                                                placeholder="Enter your alamat email"
                                                 value="{{ old('email') ? old('email') : '' }}"
                                                 aria-label="Email" aria-describedby="email-addon">
                                         </div>
@@ -43,15 +43,14 @@
                                                 <input class="form-check-input" type="checkbox" value=""
                                                     id="flexCheckDefault">
                                                 <label class="font-weight-normal text-dark mb-0" for="flexCheckDefault">
-                                                    Remember for 14 days
+                                                    Ingat untuk 14 hari
                                                 </label>
                                             </div>
                                             <a href="{{ route('password.request') }}"
-                                                class="text-xs font-weight-bold ms-auto">Forgot
-                                                password</a>
+                                                class="text-xs font-weight-bold ms-auto">Lupa Password</a>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-dark w-100 mt-4 mb-3">Sign in</button>
+                                            <button type="submit" class="btn btn-dark w-100 mt-4 mb-3">Login</button>
                                         </div>
                                     </form>
                                 </div>
